@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jadual Maklumat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    body {
+  background-image: url('image/china.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+  /* Container animation on load */
+  .table-wrapper {
+    animation: fadeInUp 1s ease-in-out both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 3D Float effect for table */
+  .table-3d {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .table-3d:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Header styling */
+  .table-3d thead {
+    background: linear-gradient(90deg, #343a40, #495057);
+    color: #fff;
+    font-weight: bold;
+  }
+
+  /* Row animation on hover */
+  .table-3d tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .table-3d tbody tr:hover {
+    background-color: #e2e6ea;
+    transform: scale(1.01);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .table-3d th, .table-3d td {
+    vertical-align: middle;
+    border: none;
+  }
+
+  /* Zebra striping */
+  .table-3d tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  h2 {
+    font-weight: 700;
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+  
+  }
+</style>
+
+
+</head>
+<body>
+
+<div class="container py-5">
+  <h2 class="text-center mb-4"> Perbandingan Leksikal Antara Tiga Bahasa</h2>
+
+  <div class="table-wrapper table-responsive">
+    <table class="table table-striped text-center table-3d">
+      <thead class="table-dark">
+        <tr>
+          <th>Bil</th>
+          <th>Bahasa Melayu Johor-Riau 
+          <th>Dialek Kelantan</th>
+          <th>Loghat Cina Peranakan Kelantan
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Beberapa baris awal secara manual -->
+        <tr><td>1</td><td>jari tangan</td><td>jaghi tange</td><td>qiu zhai</td><tr>
+        <tr><td>2</td><td>lengan</td><td>lenge</td><td>qiu</td></tr>
+        <tr><td>3</td><td>ibu jari</td><td>ibu jaghi</td><td>qiu bu</td></tr></tr>
+        <tr><td>4</td><td>gelangan tangan</td><td>geley tangeh</td><td>qiu khuan</td></tr>
+        <tr><td>5</td><td>Dada</td><td>Dado</td><td>xin kua thau</td></tr>
+        <tr><td>6</td><td>ketiak</td><td>tiok</td><td>ketiok</td></tr>
+        <tr><td>7</td><td>bahu</td><td>bahu</td><td>bahu</td></tr>
+        <tr><td>8</td><td>muka</td><td>muko</td><td>bin</td></tr>
+        <tr><td>9</td><td>hidung</td><td>hidong</td><td>phi kong</td></tr>
+        <tr><td>10</td><td>bibir</td><td>bibi</td><td>chui thun</td></tr>
+        <tr><td>11</td><td>telinga</td><td>telingo</td><td>hee yar</td></tr> 
+        <tr><td>12</td><td>mata</td><td>mato</td><td>bak ciu</td></tr>
+        <r><td>13</td><td>kening</td><td>kening</td><td>bak bai</td></tr>
+        <tr><td>14</td><td>rambut</td><td>nqambuk</td><td>tham mo</td></tr>
+        <tr><td>15</td><td>dagu</td><td>daggu</td><td>Daq-ghu</td></td></tr>
+        <tr><td>16</td><td>makan</td><td>makey</td><td>ciak</td></tr>
+        <tr><td>17</td><td>tekak</td><td>tekok</td><td>am ma kun</td></tr>
+        <tr><td>18</td><td>badan</td><td>badey</td><td>Xin Khu</td></tr>
+        <tr><td>19</td><td>kepala</td><td>kepalo</td><td>tho khak</td></tr>
+        <tr><td>20</td><td>pinggang</td><td>pinggey</td><td>eyo</td></tr>
+        <tr><td>21</td><td>paha</td><td>poho</td><td>kha thui</td></tr>
+        <tr><td>22</td><td>kaki</td><td>kaki</td><td>khaa</td></tr>
+        <tr><td>23</td><td>jari kaki</td><td>jaghi kaki</td><td>kha zhai</td></tr>
+        <tr><td>24</td><td>kamu</td><td>demo</td><td>li</td></tr>
+        <tr><td>25</td><td>dia</td><td>dio/saing</td><td>i</td></tr>
+        <tr><td>26</td><td>aku/saya</td><td>kawe/ambo</td><td>wa</td></tr>
+        <tr><td>27</td><td>mereka</td><td>sep dio</td><td>i-lang</td></tr>
+        <tr><td>28</td><td>kita</td><td>kito</td><td>lan lang</td></tr>
+        <tr><td>29</td><td>kami</td><td>kawe dengey dio</td><td>wa lang</td></tr></tr>
+        <tr><td>30</td><td>botol</td><td>boto</td><td>zhui kuan</td></tr>
+        <tr><td>31</td><td>curah</td><td>cuwoh</td><td>piaa</td></tr>
+        <tr><td>32</td><td>barangkali</td><td>bokali</td><td>bakali</td></tr>
+        <tr><td>33</td><td>sergah</td><td>jerkoh</td><td>ji-yang</td></tr>
+        <tr><td>34</td><td>jerit</td><td>teppik(e pepet)</td><td>ji-yang(sama seperti maksud sergah)</td></tr>
+        <tr><td>35</td><td>itu</td><td> itu</td><td>hok tu/Hok Nu</td></tr>
+        <tr><td>36</td><td>ini</td><td>ning</td><td>hok ni</td></tr>
+        <tr><td>37</td><td>jalan</td><td>jaley</td><td>kia lo</td></tr>
+        <tr><td>38</td><td>sombong</td><td>agah</td><td>tua phao</td></tr>
+        <tr><td>39</td><td>tidak berkualiti</td><td>kodi</td><td>bhai</td></tr>
+        <tr><td>40</td><td>keluar</td><td> tubik</td><td>chut</td></tr>
+        <tr><td>41</td><td>panas</td><td>Panah</td><td>ju-wak</td></tr>
+        <tr><td>42</td><td>suka</td><td>suko</td><td>sukak</td></tr>
+        <tr><td>43</td><td>tak suka</td><td>dok suko</td><td>bo sukak</td></tr>
+        <tr><td>44</td><td>gelak</td><td>suko</td><td>qio</td></tr>
+        <tr><td>45</td><td>sedih</td><td>sedih</td><td>chek</td></tr>
+        <tr><td>46</td><td>kecewa</td><td>cewo</td><td>kek sim</td></tr>
+        <tr><td>47</td><td>geram</td><td>gerey</td><td>qi kek</td></tr>
+        <tr><td>48</td><td>benci</td><td>beci</td><td>i-yam hin</td></tr>
+        <tr><td>49</td><td>menanam</td><td>naney</td><td>zhai zheng</td></tr>
+        <tr><td>50</td><td>menari</td><td>nari</td><td>thiao bu</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
