@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hokkien Kelantan Learning Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --hokkien-color: #ff644d;
+            --malay-color: #ff8bae;
+            --beginner-color: #6e3c10;
+            --intermediate-color: #6e3c10;
+            --advanced-color: #6e3c10;
+            --light-color: #414e54;
+            --dark-color: #231f1f;
+        }
+        x
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--hokkien-color), #c62614);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid var(--malay-color);
+        }
+        
+        .language-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .hokkien-badge {
+            background-color: var(--hokkien-color);
+        }
+        
+        .malay-badge {
+            background-color: var(--malay-color);
+        }
+        
+        .level-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            border: none;
+        }
+        
+        .level-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .beginner-card {
+            border-top: 5px solid var(--beginner-color);
+        }
+        
+        .intermediate-card {
+            border-top: 5px solid var(--intermediate-color);
+        }
+        
+        .advanced-card {
+            border-top: 5px solid var(--advanced-color);
+        }
+        
+        .level-header {
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+        }
+        
+        .beginner-header {
+            background-color: var(--beginner-color);
+        }
+        
+        .intermediate-header {
+            background-color: var(--intermediate-color);
+        }
+        
+        .advanced-header {
+            background-color: var(--advanced-color);
+        }
+        
+        .lesson-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            border-left: 5px solid var(--hokkien-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            color: var(--hokkien-color);
+        }
+        
+        .vocab-card {
+            border-left: 4px solid var(--hokkien-color);
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .pronunciation-guide {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--malay-color);
+        }
+        
+        .grammar-point {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .example-sentence {
+            font-style: italic;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .nav-tabs .nav-link.active {
+            font-weight: bold;
+            color: var(--hokkien-color);
+            border-bottom: 3px solid var(--hokkien-color);
+        }
+        
+        .tab-content {
+            padding: 20px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .comparison-table th {
+            background-color: var(--hokkien-color);
+            color: white;
+            padding: 10px;
+        }
+        
+        .comparison-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 2rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Hok-Kam Ji</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html"> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="hkjsejarah.html"> History</a></li>
+          <li class="nav-item"><a class="nav-link" href="hkjquiz2.html">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="hkjportfolio.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#jombelajar">Jom Belajar</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- Header -->
+    <header class="header text-center">
+        <div class="container">
+            <h1 class="display-4"><i class="fas fa-language me-2"></i> Platform Pembelajaran Hokkien Kelantan</h1>
+            <p class="lead">Kuasai Hokkien Kelantan melalui pelajaran berstruktur berbanding dengan Bahasa Malaysiaa</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Level Selection Cards -->
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="level-card beginner-card">
+                    <div class="level-header beginner-header">
+                        <i class="fas fa-baby me-2"></i> Peringkat Tidak Fasih
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Mulakan Langkah Anda</h5>
+                        <p class="card-text">Pelajari tatabahasa asas, sapaan dan struktur ayat mudah.</p>
+                        <a href="#beginner" class="btn btn-primary">Mulakan Pembelajaran</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="level-card intermediate-card">
+                    <div class="level-header intermediate-header">
+                        <i class="fas fa-user-graduate me-2"></i> Peringkat Membina Kefasihan
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Bina Kefasihan</h5>
+                        <p class="card-text">Kembangkan pengolahan kata dan pelajari struktur tatabahasa yang lebih kompleks.</p>
+                        <a href="#intermediate" class="btn btn-warning text-white">Tidak Berputus Asa</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="level-card advanced-card">
+                    <div class="level-header advanced-header">
+                        <i class="fas fa-user-tie me-2"></i> Peringkat Fasih
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Kuasai Dialek ini</h5>
+                        <p class="card-text">Belajar ungkapan idiomatik dan tatabahasa bernuansa.</p>
+                        <a href="#advanced" class="btn btn-danger">Mantapkan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Tabs -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="lessons-tab" data-bs-toggle="tab" data-bs-target="#lessons" type="button" role="tab">Pelajaran Berstruktur</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="grammar-tab" data-bs-toggle="tab" data-bs-target="#grammar" type="button" role="tab">Bimbingan Tatabahasa</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="vocabulary-tab" data-bs-toggle="tab" data-bs-target="#vocabulary" type="button" role="tab">Bank Tatabahasa</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pronunciation-tab" data-bs-toggle="tab" data-bs-target="#pronunciation" type="button" role="tab">Tips Sebutan</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabContent">
+            <!-- Lessons Tab -->
+            <div class="tab-pane fade show active" id="lessons" role="tabpanel">
+                <!-- Beginner Level -->
+                <section id="beginner" class="lesson-section">
+                    <h2 class="section-title">Peringkat Tidak Fasih</h2>
+                    
+                    <h3><i class="fas fa-gem me-2" style="color: var(--beginner-color);"></i> Pelajaran 1: Ucapan dan Frasa Asas</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="mt-4">Perbualan Harian</h4>
+                            <table class="comparison-table">
+                                <tr>
+                                    <th>Hokkien Kelantan</th>
+                                    <th>Bahasa Melayu</th>
+                                </tr>
+                                <tr>
+                                    <td>Li ho bo?</td>
+                                    <td>Apa khabar?</td>
+                                </tr>
+                                <tr>
+                                    <td>Ho, wa ho</td>
+                                    <td>Khabar baik</td>
+                                </tr>
+                                <tr>
+                                    <td>Chiak pa bo?</td>
+                                    <td>Sudah makan?</td>
+                                </tr>
+                                <tr>
+                                    <td>Chiak pa</td>
+                                    <td>Sudah makan</td>
+                                </tr>
+                                <tr>
+                                    <td>Bo</td>
+                                    <td>Belum</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pronunciation-guide">
+                                <h4><i class="fas fa-volume-up me-2"></i> Tips Sebutan</h4>
+                                <ul>
+                                    <li>"Li ho bo?" disebut sebagai "lee ho bo?" dengan nada yang semakin meningkat "ho"</li>
+                                    <li>"Chiak" bunyi seperti "ch-yak" dengan bunyi "a" pendek</li>
+                                    <li>"bo" pada akhir soalan disebut dengan nada yang meningkat</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="grammar-point">
+                                <h4><i class="fas fa-book me-2"></i> Nota Tatabahasa</h4>
+                                <p>Dalam bahasa Hokkien Kelantan, soalan selalunya diakhiri dengan "bo" (bersamaan dengan "kah" dalam Bahasa Malaysia). Ini ialah zarah soalan yang menukar pernyataan kepada soalan ya/tidak.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 class="mt-4">Latihan Dialog</h4>
+                    <div class="example-sentence">
+                        <p><strong>Dialog 1:</strong></p>
+                        <p><span class="hokkien-badge">Hokkien</span> A: Li ho bo?</p>
+                        <p><span class="hokkien-badge">Hokkien</span> B: Ho, wa ho. Li leh?</p>
+                        <p><span class="malay-badge">BM</span> A: Apa khabar?</p>
+                        <p><span class="malay-badge">BM</span> B: Khabar baik. Awak pula?</p>
+                    </div>
+                </section>
+                
+                <!-- Intermediate Level -->
+                <section id="intermediate" class="lesson-section">
+                    <h2 class="section-title">Peringkat Membina Kefasihan</h2>
+                    
+                    <h3><i class="fas fa-gem me-2" style="color: var(--intermediate-color);"></i> Lesson 1: Daily Activities</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="mt-4">Common Verbs</h4>
+                            <table class="comparison-table">
+                                <tr>
+                                    <th>Hokkien Kelantan</th>
+                                    <th>Bahasa Malaysia</th>
+                                </tr>
+                                <tr>
+                                    <td>Ciak</td>
+                                    <td>Makan</td>
+                                </tr>
+                                <tr>
+                                    <td>Lim</td>
+                                    <td>Minum</td>
+                                </tr>
+                                <tr>
+                                    <td>Khun</td>
+                                    <td>Tidur</td>
+                                </tr>
+                                <tr>
+                                    <td>Ki</td>
+                                    <td>Pergi</td>
+                                </tr>
+                                <tr>
+                                    <td>Thak</td>
+                                    <td>Baca</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pronunciation-guide">
+                                <h4><i class="fas fa-volume-up me-2"></i> Tips Sebutan</h4>
+                                <ul>
+                                    <li>"Lim" disebut dengan bunyi "i" yang pendek, serupa dengan "lim" dalam Bahasa Malaysia tetapi lebih pendek</li>
+                                    <li>"Khun" mempunyai bunyi "kh" yang tersedut pada permulaannya</li>
+                                    <li>"Ki" disebut dengan nada tinggi, serupa dengan "kunci" dalam bahasa Inggeris tetapi lebih pendek</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="grammar-point">
+                                <h4><i class="fas fa-book me-2"></i> Nota Tatabahasa</h4>
+                                <p>Kata kerja Hokkien Kampung tidak berganding seperti kata kerja Bahasa Melayu. Bentuk yang sama digunakan tanpa mengira penanda kata. Masa ditunjukkan oleh konteks atau perkataan masa.</p>
+                                <p class="example-sentence">
+                                    <span class="hokkien-badge">Hokkien</span> Wa ciak <br>
+                                    <span class="malay-badge">BM</span> Saya makan/sudah makan/akan makan
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 class="mt-4">Practice Sentences</h4>
+                    <div class="example-sentence">
+                        <p><span class="hokkien-badge">Hokkien</span> Wa ciak pa.</p>
+                        <p><span class="malay-badge">Malay</span> Saya sudah makan.</p>
+                        <p><span class="hokkien-badge">Hokkien</span> Bek qi ta loh?</p>
+                        <p><span class="malay-badge">Malay</span> Kamu ingin pergi ke mana?</p>
+                    </div>
+                </section>
+                
+                <!-- Advanced Level -->
+                <section id="advanced" class="lesson-section">
+                    <h2 class="section-title">Peringkat Fasih</h2>
+                    
+                    <h3><i class="fas fa-gem me-2" style="color: var(--advanced-color);"></i> Lesson 1: Simpulan Bahasa</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="mt-4">Simpulan Bahasa Kebiasaan</h4>
+                            <table class="comparison-table">
+                                <tr>
+                                    <th>Hokkien Kampung</th>
+                                    <th>Maksud Tersurat</th>
+                                    <th>Persamaan dalam Bahasa Melayu</th>
+                                </tr>
+                                <tr>
+                                    <td>Kha tui chiah chng</td>
+                                    <td>Legs eat intestines</td>
+                                    <td>Banyak sangat cakap</td>
+                                </tr>
+                                <tr>
+                                    <td>Chui tun tua tua</td>
+                                    <td>Lips very big</td>
+                                    <td>Suka bercakap besar</td>
+                                </tr>
+                                <tr>
+                                    <td>Bin ang ang</td>
+                                    <td>Face red red</td>
+                                    <td>Muka merah padam</td>
+                                </tr>
+                                <tr>
+                                    <td>Tham mo tua tua</td>
+                                    <td>Beard very big</td>
+                                    <td>Sombong</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pronunciation-guide">
+                                <h4><i class="fas fa-volume-up me-2"></i> Tips Sebutan</h4>
+                                <ul>
+                                    <li>"Chiah" disebut dengan nada menurun</li>
+                                    <li>Kata adjektif yang digandakan seperti "tua tua" mengekalkan nada yang sama pada kedua-dua perkataan</li>
+                                    <li>"Ang" (merah) disebut dengan nada rata yang tinggi</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="grammar-point">
+                                <h4><i class="fas fa-book me-2"></i>Nota Tatabahasa</h4>
+                                <p>Hokkien Kelantan sering menggunakan reduplikasi untuk penekanan, sama seperti "sangat" atau "amat" Bahasa Malaysia. Kata adjektif sering diulang untuk memberi penekanan.</p>
+                                <p class="example-sentence">
+                                    <span class="hokkien-badge">Hokkien</span> Bin ang ang (Muka yang sangat merah)<br>
+                                    <span class="malay-badge">B,</span> Muka sangat merah
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 class="mt-4">Konteks Kebudayaan</h4>
+                    <p>Banyak simpulan dialek Hokkien Kelantan berasal daripada aspek fizikal atau makanan. Memahami rujukan budaya ini membantu dalam penguasaan dialek ini.</p>
+                    <div class="example-sentence">
+                        <p><span class="hokkien-badge">Hokkien</span> I kha tui chiah chng, bo si bo su.</p>
+                        <p><span class="malay-badge">BM</span> Dia banyak sangat cakap, bukan bukan pun dia cakap.</p>
+                        <p><em>(He talks too much, even about unimportant things)</em></p>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Grammar Guide Tab -->
+            <div class="tab-pane fade" id="grammar" role="tabpanel">
+                <div class="lesson-section">
+                    <h2 class="section-title">Panduan Tatabahasa Hokkien Kampung</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3><i class="fas fa-cube me-2"></i> Struktur Ayat</h3>
+                            <p>Hokkien Kelantan mengikut struktur Subject-Verb-Object (SVO) yang serupa dengan Bahasa Melayu:</p>
+                            <div class="example-sentence">
+                                <p><span class="hokkien-badge">Hokkien</span> Wa ciak pui (I eat rice)</p>
+                                <p><span class="malay-badge">BM</span> Saya makan nasi</p>
+                            </div>
+                            
+                            <h3 class="mt-4"><i class="fas fa-cube me-2"></i> Pembentukan Persoalana/Ayat Pertanyaan</h3>
+                            <p>Soalan selalunya dibentuk dengan menambah zarah soalan pada akhir:</p>
+                            <div class="example-sentence">
+                                <p><span class="hokkien-badge">Hokkien</span> Ee ciak pa bo? (Awak sudah makan ke belum?)</p>
+                                <p><span class="malay-badge">BM</span> Awak sudah makan?</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h3><i class="fas fa-cube me-2"></i> Penafian</h3>
+                            <p>Untuk menafikan kata kerja, "bo" digunakan sebelum kata kerja:</p>
+                            <div class="example-sentence">
+                                <p><span class="hokkien-badge">Hokkien</span> Wa bo ciak (Saya tidak makan)</p>
+                                <p><span class="malay-badge">Malay</span> Saya tidak makan</p>
+                            </div>
+                            
+                            <h3 class="mt-4"><i class="fas fa-cube me-2"></i> Pemilikan</h3>
+                            <p>Sifat merujuk kepada pemilikan ditunjukkan dengan "e" selepas pemilik:</p>
+                            <div class="example-sentence">
+                                <p><span class="hokkien-badge">Hokkien</span> Wa e bo-yik (Buku kepunyaan sayak)</p>
+                                <p><span class="malay-badge">Malay</span> Buku saya</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-4"><i class="fas fa-cube me-2"></i> Penanda Tense</h3>
+                    <p>Hokkien Kelantan menggunakan kata masa dan bukannya kata kerja konjugasi:</p>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Tense</th>
+                            <th>Hokkien Kelantan</th>
+                            <th>Bahasa Malaysia</th>
+                        </tr>
+                        <tr>
+                            <td>Selepas</td>
+                            <td>Wa ciak pa (I eat already)</td>
+                            <td>Saya sudah makan</td>
+                        </tr>
+                        <tr>
+                            <td>Semasa</td>
+                            <td>Wa ciak (I eat)</td>
+                            <td>Saya makan</td>
+                        </tr>
+                        <tr>
+                            <td>Selepas</td>
+                            <td>Wa beh ciak (I will eat)</td>
+                            <td>Saya akan makan</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Vocabulary Tab -->
+            <div class="tab-pane fade" id="vocabulary" role="tabpanel">
+                <div class="lesson-section">
+                    <h2 class="section-title">Vocabulary Bank</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3><i class="fas fa-utensils me-2"></i> Makanan & Hidangan</h3>
+                            <div class="vocab-card">
+                                <p><strong>Pui</strong> - Nasi (Rice)</p>
+                                <p><strong>Bak kia</strong> - Kaca Mata</p>
+                                <p><strong>Gea bak</strong> - Daging ayam (Chicken)</p>
+                                <p><strong>Bak ciu</strong> - Mata (Eyes)</p>
+                                <p><strong>I-am pik</strong> - Pensil (Pencil)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><i class="fas fa-users me-2"></i>Rakyat & Keluarga</h3>
+                            <div class="vocab-card">
+                                <p><strong>Am ma kun</strong> - Leher (Neck)</p>
+                                <p><strong>Kia lo</strong> - Jalan Kaki (Walking)</p>
+                                <p><strong>Zhao lo</strong> - Berlari (Running)</p>
+                                <p><strong>Zha bo</strong> - Perempuan (Women)</p>
+                                <p><strong>Zha po</strong> - Lelaki (Man)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><i class="fas fa-home me-2"></i> Item Setiap Hari</h3>
+                            <div class="vocab-card">
+                                <p><strong>Chek</strong> - Buku (Book)</p>
+                                <p><strong>Qiu bu</strong> - Jari Tangan(Thumb)</p>
+                                <p><strong>Qiu khuan</strong> - Wrist (Pergelanggan Tangan)</p>
+                                <p><strong>Dian nao</strong> - Komputer (Computer)</p>
+                                <p><strong>Qiu pio</strong> - Jam Tangan (Watch)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <h3><i class="fas fa-user me-2"></i> Bahagian Badan</h3>
+                            <div class="vocab-card">
+                                <p><strong>Kha tui</strong> - Kaki (Leg)</p>
+                                <p><strong>Chiu/qiu</strong> - Lengan (Hand)</p>
+                                <p><strong>Chui tun</strong> - Bibir (Lips)</p>
+                                <p><strong>Hee-Yar</strong> - Telinga (Ear)</p>
+                                <p><strong>Bin</strong> - Muka (Face)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><i class="fas fa-comments me-2"></i> Frasa</h3>
+                            <div class="vocab-card">
+                                <p><strong>Wa bo zhai</strong> - Saya tidak tahu (I don't know)</p>
+                                <p><strong>Zhai zheng ho</strong> - Bercucuk tanam itu amalan baik (Very good)</p>
+                                <p><strong>Bo lui</strong> - Tiada duit (No money)</p>
+                                <p><strong>Mai Kek seng</strong> - Jangan marah (Don't be angry)</p>
+                                <p><strong>Ho ciak</strong> - Sedap (Delicious)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><i class="fas fa-adjust me-2"></i> Adjektif atau kata sifat</h3>
+                            <div class="vocab-card">
+                                <p><strong>Sui</strong> - Cantik (Beautiful)</p>
+                                <p><strong>Oo</strong> - Hitam (Black)</p>
+                                <p><strong>Ang</strong> - Merah (Red)</p>
+                                <p><strong>Sukak</strong> - Suka (Like)</p>
+                                <p><strong>Ho</strong> - Baik (Good)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pronunciation Tab -->
+            <div class="tab-pane fade" id="pronunciation" role="tabpanel">
+                <div class="lesson-section">
+                    <h2 class="section-title">Bimbingan Sebutan</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3><i class="fas fa-volume-up me-2"></i> Sistem Intonasi</h3>
+                            <p>Hokkien Kelantan mempunyai sistem nada yang kompleks dengan 5-7 nada bergantung kepada dialek. Nada utama untuk dikuasai:</p>
+                            <table class="comparison-table">
+                                <tr>
+                                    <th>Intonasi</th>
+                                    <th>Contoh</th>
+                                    <th>Deskripsi</th>
+                                </tr>
+                                <tr>
+                                    <td>Peringkat Tinggi (55)</td>
+                                    <td>si (poem)</td>
+                                    <td>Pic rata tinggi</td>
+                                </tr>
+                                <tr>
+                                    <td>Peningkatan sederhana (35)</td>
+                                    <td>tera (to try)</td>
+                                    <td>Starts mid, rises sharply</td>
+                                </tr>
+                                <tr>
+                                    <td>Jatuh rendah (21)</td>
+                                    <td>sì (time)</td>
+                                    <td>Mula rendah, suara jatuh perlahan</td>
+                                </tr>
+                                <tr>
+                                    <td>Jatuh tinggi (53)</td>
+                                    <td>sî (city)</td>
+                                    <td>Bermula tinggi, jatuh mendadak</td>
+                                </tr>
+                            </table>
+                            
+                            <h3 class="mt-4"><i class="fas fa-volume-up me-2"></i> Perubahan Bunyi Biasa</h3>
+                            <p>Hokkien Kampung mempunyai beberapa ciri bunyi yang unik:</p>
+                            <ul>
+                                <li>Akhir "-n" selalunya menjadi "-ng" (cth., "bin" → "bing")</li>
+                                <li>"S" pada permulaan perkataan selalunya menjadi "h" (cth., "suka" → "hukak")</li>
+                                <li>Vokal sering disengau (ditandai dengan "ⁿ" dalam tatatanda linguistik)</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3><i class="fas fa-volume-up me-2"></i> Bunyi Sukar dihasil</h3>
+                            <div class="pronunciation-guide">
+                                <h4>Konsonan Aspirasi</h4>
+                                <p>Hokkien mempunyai konsonan aspirasi yang tidak wujud dalam Bahasa Malaysia:</p>
+                                <ul>
+                                    <li><strong>kh</strong> - as in "khun" (sleep) - strong puff of air</li>
+                                    <li><strong>th</strong> - as in "thak" (read) - aspirated "t"</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="pronunciation-guide mt-4">
+                                <h4>Pemerhentian glottal</h4>
+                                <p>Perkataan yang berakhir dengan "-h" mempunyai hentian glotal (potongan mengejut):</p>
+                                <ul>
+                                    <li>"Bak" (meat) berakhir dengan hentian glotal</li>
+                                    <li>"Khoo" (to cry) mempunyai penyempitan glotal</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="pronunciation-guide mt-4">
+                                <h4>Vokal Nasal</h4>
+                                <p>Banyak vokal disengau dalam dialek Hokkien Kampung:</p>
+                                <ul>
+                                    <li>"Saa" (suara sengau) mempunyai sengau yang kuat</li>
+                                    <li>"Ea" (air) disebut dengan kualiti hidung</li>
+                                </ul>
+                            </div>
+                            
+                            <h3 class="mt-4"><i class="fas fa-volume-up me-2"></i> Latihan Tubi</h3>
+                            <div class="example-sentence">
+                                <p>Dengar dan ulangi pasangan minimum ini:</p>
+                                <p><strong>si</strong> (poem) vs <strong>sí</strong> (to try)</p>
+                                <p><strong>bin</strong> (face) vs <strong>bín</strong> (quick)</p>
+                                <p><strong>bak</strong> (meat) vs <strong>bák</strong> (to hit)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>Hok-Kam Kampung &copy; 2023</p>
+            <p class="mb-0">Direka khas untuk peminat bahasa dan pelajar warisan</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Activate all tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
