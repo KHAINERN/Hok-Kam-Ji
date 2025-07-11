@@ -372,7 +372,7 @@ x1
     <source src="tang3.mp3" type="audio/mpeg">
   </audio>
   <button id="musicToggle" class="btn btn-sm btn-outline-secondary">
-    <i class="fas fa-music"></i> <span id="musicStatus">Pause Theme</span>
+    <i class="fas fa-music"></i> <span id="musicStatus">Hentikan Lagu</span>
   </button>
   <span class="volume-control">
     <i class="fas fa-volume-down"></i>
@@ -447,24 +447,24 @@ x1
 
     if (audioEnabled === 'true') {
       music.play().then(() => {
-        statusLabel.textContent = "Pause Theme";
+        statusLabel.textContent = "Hentikan Lagu";
       }).catch(err => {
         console.log("Autoplay blocked. Waiting for user interaction.");
-        statusLabel.textContent = "Play Theme";
+        statusLabel.textContent = "Mainkan Lagu";
       });
     } else {
-      statusLabel.textContent = "Play Theme";
+      statusLabel.textContent = "Mainkan Lagu";
     }
 
     // Toggle music
     toggleBtn.addEventListener('click', function () {
       if (music.paused) {
         music.play();
-        statusLabel.textContent = "Pause Theme";
+        statusLabel.textContent = "Hentikan Lagu";
         localStorage.setItem('audioEnabled', 'true');
       } else {
         music.pause();
-        statusLabel.textContent = "Play Theme";
+        statusLabel.textContent = "Mainkan Lagu";
         localStorage.setItem('audioEnabled', 'false');
       }
     });
