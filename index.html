@@ -366,25 +366,24 @@ x1
       <p>Several undergraduate and postgraduate theses from local universities such as UKM, UM, and USM have contributed to documenting vocabulary, oral histories, and sociolinguistic contexts of the Chinese Peranakan in Kelantan.</p>
     </div>
   </div>
-
-  <!-- Music Player - Add this to your HTML (best in footer or sidebar) -->
+<!-- 🎵 Music Player - Appears at bottom right -->
 <div class="music-player">
-  <audio id="bgMusic" loop>
+  <audio id="bgMusic" autoplay loop>
     <source src="tang.mp3" type="audio/mpeg">
-    Your browser does not support audio element.
+    Your browser does not support the audio element.
   </audio>
   <button id="musicToggle" class="btn btn-sm btn-outline-secondary">
-    <i class="fas fa-music"></i> <span id="musicStatus">Play Theme</span>
+    <i class="fas fa-music"></i> <span id="musicStatus">Pause Theme</span>
   </button>
   <span class="volume-control">
     <i class="fas fa-volume-down"></i>
-    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.3">
     <i class="fas fa-volume-up"></i>
   </span>
 </div>
 
+<!-- 🎨 Music Player Styles -->
 <style>
-  /* Music Player Styles */
   .music-player {
     position: fixed;
     bottom: 20px;
@@ -398,60 +397,89 @@ x1
     align-items: center;
     gap: 10px;
   }
-  
+
   .volume-control {
     display: flex;
     align-items: center;
     gap: 5px;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, width 0.3s;
     width: 0;
     overflow: hidden;
   }
-  
+
   .music-player:hover .volume-control {
     opacity: 1;
     width: 120px;
   }
-  
+
   #volumeSlider {
     width: 80px;
   }
+
+  .btn-outline-secondary {
+    border-color: #b71c1c;
+    color: #b71c1c;
+  }
+
+  .btn-outline-secondary:hover {
+    background-color: #b71c1c;
+    color: white;
+  }
 </style>
 
+<!-- 🧠 Music Player Script -->
 <script>
-  // Music Player Functionality
-  const music = document.getElementById('bgMusic');
-  const toggleBtn = document.getElementById('musicToggle');
-  const statusLabel = document.getElementById('musicStatus');
-  const volumeSlider = document.getElementById('volumeSlider');
-  
-  // Check if user previously allowed audio
-  let audioEnabled = localStorage.getItem('audioEnabled') === 'true';
-  
-  if(audioEnabled) {
-    music.volume = 0.3; // Start at low volume
-    music.play().catch(e => console.log("Auto-play prevented"));
-  }
-  
-  // Toggle button
-  toggleBtn.addEventListener('click', function() {
-    if(music.paused) {
-      music.play();
-      statusLabel.textContent = "Pause Theme";
+  document.addEventListener("DOMContentLoaded", function () {
+    const music = document.getElementById('bgMusic');
+    const toggleBtn = document.getElementById('musicToggle');
+    const statusLabel = document.getElementById('musicStatus');
+    const volumeSlider = document.getElementById('volumeSlider');
+
+    // Load preference or default to true
+    let audioEnabled = localStorage.getItem('audioEnabled');
+    if (audioEnabled === null) {
+      audioEnabled = 'true';
       localStorage.setItem('audioEnabled', 'true');
-    } else {
-      music.pause();
-      statusLabel.textContent = "Play Theme";
-      localStorage.setItem('audioEnabled', 'false');
     }
-  });
-  
-  // Volume control
-  volumeSlider.addEventListener('input', function() {
-    music.volume = this.value;
+
+    // Apply audio settings
+    music.volume = parseFloat(volumeSlider.value);
+
+    if (audioEnabled === 'true') {
+      music.play().then(() => {
+        statusLabel.textContent = "Pause Theme";
+      }).catch(err => {
+        console.log("Autoplay blocked. Waiting for user interaction.");
+        statusLabel.textContent = "Play Theme";
+      });
+    } else {
+      statusLabel.textContent = "Play Theme";
+    }
+
+    // Toggle music
+    toggleBtn.addEventListener('click', function () {
+      if (music.paused) {
+        music.play();
+        statusLabel.textContent = "Pause Theme";
+        localStorage.setItem('audioEnabled', 'true');
+      } else {
+        music.pause();
+        statusLabel.textContent = "Play Theme";
+        localStorage.setItem('audioEnabled', 'false');
+      }
+    });
+
+    // Volume control
+    volumeSlider.addEventListener('input', function () {
+      music.volume = parseFloat(this.value);
+    });
   });
 </script>
+
+<!-- 🧩 Font Awesome (needed for icons) -->
+<script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+
 
   <!-- Footer -->
   <footer class="text-center py-4 mt-5" style="background-color: #eee;">
@@ -459,11 +487,6 @@ x1
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <audio autoplay loop controls>
-    <source src="tangmusic.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
 
 </body>
 </html>
