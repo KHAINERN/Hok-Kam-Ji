@@ -19,7 +19,7 @@
       padding-top: 56px; /* Add padding to body to account for fixed navbar */
     }
     .hero {
-      background-image: url('background.png');
+      background-image: url('image/background.png');
       background-size: cover;
       background-position: center;
       color: white;
@@ -181,6 +181,7 @@
   #volumeSlider {
     width: 80px;
   }
+  
   </style>
 </head>
 <body>
@@ -227,7 +228,10 @@
     <div class="row g-4">
       <!-- Cultural History Card -->
       <div class="col-md-4">
-        <a href="https://theinspirasi.my/cina-peranakan-di-kelantan-sebagai-model-integrasi-budaya-di-malaysia/" class="card-link">
+        <a href="https://theinspirasi.my/cina-peranakan-di-kelantan-sebagai-model-integrasi-budaya-di-malaysia/" 
+           class="card-link external-link" 
+           target="_blank"
+           onclick="return handleCardClick(this)">
           <div class="card h-100 text-center p-3 shadow overview-card">
             <div class="card-icon">📜</div>
             <h5 class="mt-3">Sejarah Warisan</h5>
@@ -239,24 +243,29 @@
         </a>
       </div>
       
-     <!-- Cuisines Card -->
-<div class="col-md-4">
-  <a href="https://youtu.be/7rXhDIrZL4k?si=4WFOTPxIy9Twxc02" class="card-link" target="_blank">
-    <div class="card h-100 text-center p-3 shadow overview-card">
-      <div class="card-icon">🎎</div>
-      <h5 class="mt-3">Terokai Hidangan Peranakan</h5>
-      <p>Ketahui tentang masakan unik dan hidangan Peranakan yang terkenal.</p>
-      <div class="card-overlay">
-        <span class="btn btn-outline-light">Hidangan Makanan</span>
+      <!-- Cuisines Card -->
+      <div class="col-md-4">
+        <a href="https://youtu.be/7rXhDIrZL4k?si=4WFOTPxIy9Twxc02" 
+           class="card-link external-link" 
+           target="_blank"
+           onclick="return handleCardClick(this)">
+          <div class="card h-100 text-center p-3 shadow overview-card">
+            <div class="card-icon">🎎</div>
+            <h5 class="mt-3">Terokai Hidangan Peranakan</h5>
+            <p>Ketahui tentang masakan unik dan hidangan Peranakan yang terkenal.</p>
+            <div class="card-overlay">
+              <span class="btn btn-outline-light">Hidangan Makanan</span>
+            </div>
+          </div>
+        </a>
       </div>
-    </div>
-  </a>
-</div>
-
       
       <!-- Dialect & Language Card -->
       <div class="col-md-4">
-        <a href="https://www.youtube.com/watch?v=bBzQH0zl5JU&t=501s" class="card-link">
+        <a href="https://www.youtube.com/watch?v=bBzQH0zl5JU&t=501s" 
+           class="card-link external-link" 
+           target="_blank"
+           onclick="return handleCardClick(this)">
           <div class="card h-100 text-center p-3 shadow overview-card">
             <div class="card-icon">🗣️</div>
             <h5 class="mt-3">Bahasa & Dialek</h5>
@@ -272,26 +281,36 @@
 </section>
 
 <script>
-  // Add click animation
+  // New function to handle card clicks
+  function handleCardClick(link) {
+    // For external links (marked with external-link class)
+    if (link.classList.contains('external-link')) {
+      // Just let the default target="_blank" behavior happen
+      return true;
+    }
+    
+    // For internal links (original behavior)
+    link.style.transform = 'translateY(2px)';
+    const destination = link.getAttribute('href');
+    
+    document.body.style.opacity = '0.8';
+    document.body.style.transition = 'opacity 0.3s ease';
+    
+    setTimeout(() => {
+      window.location.href = destination;
+    }, 300);
+    
+    return false; // Prevent default behavior
+  }
+
+  // Remove the previous event listeners to avoid conflicts
   document.querySelectorAll('.card-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-      // Add click animation
-      this.style.transform = 'translateY(2px)';
-      
-      // Optional: Add a delay before navigation
-      e.preventDefault();
-      const destination = this.getAttribute('href');
-      
-      // Add fade out animation to current page
-      document.body.style.opacity = '0.8';
-      document.body.style.transition = 'opacity 0.3s ease';
-      
-      setTimeout(() => {
-        window.location.href = destination;
-      }, 300);
-    });
+    link.removeEventListener('click', link._clickHandler);
   });
 </script>
+
+
+
 
  <!-- About Us Section -->
     <section id="about" class="py-5">
@@ -431,7 +450,7 @@
   <!-- Music Player - Add this to your HTML (best in footer or sidebar) -->
 <div class="music-player">
   <audio id="bgMusic" loop>
-    <source src="tang3.mp3" type="audio/mpeg">
+    <source src="song/tang3.mp3" type="audio/mpeg">
     Your browser does not support audio element.
   </audio>
   <button id="musicToggle" class="btn btn-sm btn-outline-secondary">
