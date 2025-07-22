@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hok-Kam Ji: Pangkalan Data Loghat Peranakan Cina Kelantan</title>
+  <title>Hok-Kam Ji</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,27 +14,28 @@
   <style>
     body {
       font-family:'Playfair Display', serif;
-      background-color: #fdf6f0;
-      color: #333;
+      background-color: #fffafa;
+      color: #151414;
       padding-top: 56px; /* Add padding to body to account for fixed navbar */
     }
     .hero {
-      background-image: url('background.png');
+      background-image: url('image/background.png');
       background-size: cover;
       background-position: center;
       color: white;
       padding: 120px 0;
       text-align: center;
       background-blend-mode: overlay;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(7, 7, 7, 0.5);
     }
     .section-title {
       font-weight: bold;
-      border-bottom: 3px solid #c62828;
+      border-bottom: 3px solid #790d0dc4;
       display: inline-block;
       margin-bottom: 20px;
     }
     .navbar-brand {
+      font-family:'Playfair Display', serif;
       font-weight: bold;
       color: #b71c1c;
     }
@@ -43,7 +44,7 @@
       background-color: #fffaf0;
     }
     .dictionary-preview {
-      background-color: #fff3e0;
+      background-color: #e6e4e1;
       padding: 1rem;
       border-radius: 10px;
     }
@@ -62,38 +63,145 @@
     
     /* Research cards styling */
     .research-card {
-      background-color: white;
+      background-color: rgb(237, 235, 235);
       padding: 20px;
       margin-bottom: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(160, 139, 139, 0.1);
     }
     .research-card h4 {
-      color: #7B241C;
+      color: #0d0d0d;
       border-bottom: 2px solid #ff7043;
       padding-bottom: 8px;
       margin-bottom: 15px;
     }
+
+    /* Card Link Styling */
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-link:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Card Hover Effects */
+  .overview-card {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: white;
+  }
+  
+  .overview-card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(145, 89, 84, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .overview-card:hover .card-overlay {
+    opacity: 1;
+  }
+  
+  .card-icon {
+    font-size: 2.5rem;
+    color: #da1604;
+    transition: all 0.3s ease;
+  }
+  
+  .overview-card:hover .card-icon {
+    transform: scale(1.1);
+    color: #D4AF37;
+  }
+  
+  /* Button Styling */
+  .btn-outline-light {
+    border: 2px solid white;
+    color: white;
+    background: transparent;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-outline-light:hover {
+    background: white;
+    color: #7B241C;
+  }
+
+  /* Music Player Styles */
+  .music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.9);
+    padding: 10px 15px;
+    border-radius: 50px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    width: 0;
+    overflow: hidden;
+  }
+  
+  .music-player:hover .volume-control {
+    opacity: 1;
+    width: 120px;
+  }
+  
+  #volumeSlider {
+    width: 80px;
+  }
   </style>
 </head>
 <body>
 <!-- Navbar - now fixed to top -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Hok-Kam Ji</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="hkjsejarah.html"><i class="fas fa-history me-1"></i> History</a></li>
-          <li class="nav-item"><a class="nav-link" href="hkjquiz2.html"><i class="fas fa-question-circle me-1"></i> Quiz</a></li>
-          <li class="nav-item"><a class="nav-link" href="hkjportfolio.html"><i class="fas fa-users me-1"></i> About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="hkjlessonpage.html"><i class="fas fa-book me-1"></i> Jom Belajar</a></li>
-        </ul>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Hok-Kam Ji</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="hkjsejarah.html"><i class="fas fa-history me-1"></i> History</a></li>
+        <li class="nav-item"><a class="nav-link" href="hkjportfolio.html"><i class="fas fa-users me-1"></i> About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="hkjquiz.html"><i class="fas fa-question-circle me-1"></i> Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="hkjlessonpage.html"><i class="fas fa-book me-1"></i> Jom Belajar</a></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Rest of your HTML content remains the same -->
   <!-- Hero Section -->
@@ -162,80 +270,6 @@
     </div>
   </div>
 </section>
-
-<style>
-  /* Card Link Styling */
-  .card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-  
-  .card-link:hover {
-    transform: translateY(-5px);
-  }
-  
-  /* Card Hover Effects */
-  .overview-card {
-    position: relative;
-    overflow: hidden;
-    border: none;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    background: white;
-  }
-  
-  .overview-card:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  }
-  
-  .card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(123, 36, 28, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 10px;
-  }
-  
-  .overview-card:hover .card-overlay {
-    opacity: 1;
-  }
-  
-  .card-icon {
-    font-size: 2.5rem;
-    color: #7B241C;
-    transition: all 0.3s ease;
-  }
-  
-  .overview-card:hover .card-icon {
-    transform: scale(1.1);
-    color: #D4AF37;
-  }
-  
-  /* Button Styling */
-  .btn-outline-light {
-    border: 2px solid white;
-    color: white;
-    background: transparent;
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-outline-light:hover {
-    background: white;
-    color: #7B241C;
-  }
-</style>
 
 <script>
   // Add click animation
@@ -397,7 +431,7 @@
   <!-- Music Player - Add this to your HTML (best in footer or sidebar) -->
 <div class="music-player">
   <audio id="bgMusic" loop>
-    <source src="tang.mp3" type="audio/mpeg">
+    <source src="tang3.mp3" type="audio/mpeg">
     Your browser does not support audio element.
   </audio>
   <button id="musicToggle" class="btn btn-sm btn-outline-secondary">
@@ -409,42 +443,6 @@
     <i class="fas fa-volume-up"></i>
   </span>
 </div>
-
-<style>
-  /* Music Player Styles */
-  .music-player {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(255,255,255,0.9);
-    padding: 10px 15px;
-    border-radius: 50px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .volume-control {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    width: 0;
-    overflow: hidden;
-  }
-  
-  .music-player:hover .volume-control {
-    opacity: 1;
-    width: 120px;
-  }
-  
-  #volumeSlider {
-    width: 80px;
-  }
-</style>
 
 <script>
   // Music Player Functionality
@@ -482,9 +480,8 @@
 
   <!-- Footer -->
   <footer class="text-center py-4 mt-5" style="background-color: #eee;">
-    <p>© 2025 Hok-Kam Ji | Preserving Heritage Through Technology</p>
+    <p>© 2025 Hok-Kam Ji | Memelihara Bahasa, Budaya & Jati Diri Melalui Teknologi</p>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
