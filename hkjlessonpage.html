@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hokkien Kelantan Learning Platform</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         :root {
             --hokkien-color: #ff644d;
@@ -16,19 +21,29 @@
             --light-color: #414e54;
             --dark-color: #231f1f;
         }
-        x
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
             color: #333;
+            padding-top: 56px; /* Added to account for fixed navbar */
+        }
+        .navbar-brand {
+            font-family:'Playfair Display', serif;
+            font-weight: bold;
+            color: #b71c1c;
         }
         
         .header {
             background: linear-gradient(135deg, var(--hokkien-color), #c62614);
             color: white;
-            padding: 3rem 0;
+            padding: 6rem 0 3rem 0; /* Increased top padding to 6rem to push content below navbar */
             margin-bottom: 2rem;
             border-bottom: 5px solid var(--malay-color);
+            margin-top: -56px; /* Counteract the body padding */
+        }
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .language-badge {
@@ -168,47 +183,151 @@
         }
         
         @media (max-width: 768px) {
+
+            body {
+                padding-top: 60px; /* Slightly less padding on mobile */
+            }
+
             .header {
-                padding: 2rem 0;
+                padding: 3.5rem 0 1.5rem 0; /* Adjusted for mobile */
             }
             
             .section-title {
                 font-size: 1.5rem;
             }
         }
+
+        .flashcard-button {
+        background: linear-gradient(135deg, #ff644d, #c62614);
+        border: none;
+        font-weight: bold;
+        padding: 12px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        position: bottom;
+        overflow: hidden;
+    }
+    
+    .flashcard-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    
+    .flashcard-button::before {
+        content: '';
+        position: bottom;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255,255,255,0.1);
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+    }
+    
+    .flashcard-button:hover::before {
+        left: 100%;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .flashcard-button-container {
+        transition: all 0.3s ease;
+    }
+    
+    .flashcard-button-container:hover {
+        transform: scale(1.05);
+    }
+
+    /* Music Player Styles */
+  .music-player {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: rgba(255,255,255,0.9);
+    padding: 10px 15px;
+    border-radius: 50px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    width: 0;
+    overflow: hidden;
+  }
+  
+  .music-player:hover .volume-control {
+    opacity: 1;
+    width: 120px;
+  }
+  
+  #volumeSlider {
+    width: 80px;
+  }
     </style>
 </head>
 <body>
     
-<!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Hok-Kam Ji</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <a class="navbar-brand" href="#">Hok-Kam Ji</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html"> Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="hkjsejarah.html"> History</a></li>
-          <li class="nav-item"><a class="nav-link" href="hkjquiz2.html">Quiz</a></li>
-          <li class="nav-item"><a class="nav-link" href="hkjportfolio.html">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="#jombelajar">Jom Belajar</a></li>
-        </ul>
-      </div>
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="hkjsejarah.html"><i class="fas fa-history me-1"></i> History</a></li>
+        <li class="nav-item"><a class="nav-link" href="hkjportfolio.html"><i class="fas fa-users me-1"></i> About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="hkjquiz.html"><i class="fas fa-question-circle me-1"></i> Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="hkjlessonpage.html"><i class="fas fa-book me-1"></i> Jom Belajar</a></li>
+    </ul>
     </div>
-  </nav>
+    </div>
+    </nav>
     <!-- Header -->
     <header class="header text-center">
         <div class="container">
             <h1 class="display-4"><i class="fas fa-language me-2"></i> Platform Pembelajaran Hokkien Kelantan</h1>
-            <p class="lead">Kuasai Hokkien Kelantan melalui pelajaran berstruktur berbanding dengan Bahasa Malaysiaa</p>
+            <p class="lead">Kuasai Hokkien Kelantan melalui pelajaran berstruktur berbanding dengan Bahasa Malaysia</p>
         </div>
     </header>
-    
     <div class="container">
-        <!-- Level Selection Cards -->
-        <div class="row mb-5">
+        <!-- Level Selection Cards -->     
+        
+        <!-- Main Content Tabs -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="lessons-tab" data-bs-toggle="tab" data-bs-target="#lessons" type="button" role="tab">Pelajaran Berstruktur</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="grammar-tab" data-bs-toggle="tab" data-bs-target="#grammar" type="button" role="tab">Bimbingan Tatabahasa</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="vocabulary-tab" data-bs-toggle="tab" data-bs-target="#vocabulary" type="button" role="tab">Bank Kosa Kata</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pronunciation-tab" data-bs-toggle="tab" data-bs-target="#pronunciation" type="button" role="tab">Tips Sebutan</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabContent">
+            <!-- Lessons Tab -->
+            <div class="tab-pane fade show active" id="lessons" role="tabpanel">
+                <div class="row mb-5">
             <div class="col-md-4">
                 <div class="level-card beginner-card">
                     <div class="level-header beginner-header">
@@ -246,31 +365,11 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Main Content Tabs -->
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="lessons-tab" data-bs-toggle="tab" data-bs-target="#lessons" type="button" role="tab">Pelajaran Berstruktur</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="grammar-tab" data-bs-toggle="tab" data-bs-target="#grammar" type="button" role="tab">Bimbingan Tatabahasa</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="vocabulary-tab" data-bs-toggle="tab" data-bs-target="#vocabulary" type="button" role="tab">Bank Tatabahasa</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pronunciation-tab" data-bs-toggle="tab" data-bs-target="#pronunciation" type="button" role="tab">Tips Sebutan</button>
-            </li>
-        </ul>
-        
-        <div class="tab-content" id="myTabContent">
-            <!-- Lessons Tab -->
-            <div class="tab-pane fade show active" id="lessons" role="tabpanel">
                 <!-- Beginner Level -->
                 <section id="beginner" class="lesson-section">
                     <h2 class="section-title">Peringkat Tidak Fasih</h2>
                     
-                    <h3><i class="fas fa-gem me-2" style="color: var(--beginner-color);"></i> Pembelajaran 1: Ucapan dan Frasa Asas</h3>
+                    <h3><i class="fas fa-gem me-2" style="color: var(--beginner-color);"></i> Pelajaran 1: Ucapan dan Frasa Asas</h3>
                     
                     <div class="row">
                         <div class="col-md-6">
@@ -290,7 +389,7 @@
                                 </tr>
                                 <tr>
                                     <td>Chiak pa bo?</td>
-                                    <td>Sudah makan?</td>
+                                    <td>Sudah makan belum?</td>
                                 </tr>
                                 <tr>
                                     <td>Chiak pa</td>
@@ -333,15 +432,15 @@
                 <section id="intermediate" class="lesson-section">
                     <h2 class="section-title">Peringkat Membina Kefasihan</h2>
                     
-                    <h3><i class="fas fa-gem me-2" style="color: var(--intermediate-color);"></i> Pembelajaran 2: Aktiviti Harian</h3>
+                    <h3><i class="fas fa-gem me-2" style="color: var(--intermediate-color);"></i> Pembelajaran 2: Sebutan Harian</h3>
                     
                     <div class="row">
                         <div class="col-md-6">
-                            <h4 class="mt-4">Adverba asas</h4>
+                            <h4 class="mt-4">Kata Kerja Harian</h4>
                             <table class="comparison-table">
                                 <tr>
                                     <th>Hokkien Kelantan</th>
-                                    <th>Bahasa Melayu</th>
+                                    <th>Bahasa Malaysia</th>
                                 </tr>
                                 <tr>
                                     <td>Ciak</td>
@@ -386,11 +485,11 @@
                         </div>
                     </div>
                     
-                    <h4 class="mt-4">Practice Sentences</h4>
+                    <h4 class="mt-4">Ayat Latihan</h4>
                     <div class="example-sentence">
                         <p><span class="hokkien-badge">Hokkien</span> Wa ciak pa.</p>
                         <p><span class="malay-badge">Malay</span> Saya sudah makan.</p>
-                        <p><span class="hokkien-badge">Hokkien</span> Bek qi ta loh?</p>
+                        <p><span class="hokkien-badge">Hokkien</span> Bek qi ta lok?</p>
                         <p><span class="malay-badge">Malay</span> Kamu ingin pergi ke mana?</p>
                     </div>
                 </section>
@@ -403,31 +502,28 @@
                     
                     <div class="row">
                         <div class="col-md-6">
-                            <h4 class="mt-4">Simpulan Bahasa Harian</h4>
+                            <h4 class="mt-4">Simpulan Bahasa Kebiasaan</h4>
                             <table class="comparison-table">
                                 <tr>
                                     <th>Hokkien Kampung</th>
                                     <th>Maksud Tersurat</th>
-                                    <th>Persamaan dalam Bahasa Melayu</th>
+                                
                                 </tr>
                                 <tr>
-                                    <td>Kha tui chiah chng</td>
-                                    <td>Legs eat intestines</td>
+                                    <td>Kha tui chiah cheng</td>
                                     <td>Banyak sangat cakap</td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>Chui tun tua tua</td>
-                                    <td>Lips very big</td>
                                     <td>Suka bercakap besar</td>
                                 </tr>
                                 <tr>
                                     <td>Bin ang ang</td>
-                                    <td>Face red red</td>
                                     <td>Muka merah padam</td>
                                 </tr>
                                 <tr>
                                     <td>Tham mo tua tua</td>
-                                    <td>Beard very big</td>
                                     <td>Sombong</td>
                                 </tr>
                             </table>
@@ -447,7 +543,7 @@
                                 <p>Hokkien Kelantan sering menggunakan reduplikasi untuk penekanan, sama seperti "sangat" atau "amat" Bahasa Malaysia. Kata adjektif sering diulang untuk memberi penekanan.</p>
                                 <p class="example-sentence">
                                     <span class="hokkien-badge">Hokkien</span> Bin ang ang (Muka yang sangat merah)<br>
-                                    <span class="malay-badge">B,</span> Muka sangat merah
+                                    <span class="malay-badge">BM</span> Muka sangat merah
                                 </p>
                             </div>
                         </div>
@@ -458,10 +554,36 @@
                     <div class="example-sentence">
                         <p><span class="hokkien-badge">Hokkien</span> I kha tui chiah chng, bo si bo su.</p>
                         <p><span class="malay-badge">BM</span> Dia banyak sangat cakap, bukan bukan pun dia cakap.</p>
-                        <p><em>(He talks too much, even about unimportant things)</em></p>
                     </div>
+
+                <div class="row mb-5">
+            <div class="col-md-4">
+        
+                    
+                    <div class="card-body">
+                    
+                        <a href="#beginner" class="btn btn-primary">Mulakan Pembelajaran</a>
+                    </div>
+            
+            </div>
+            <div class="col-md-4">
+                    <div class="card-body">
+                        <a href="#intermediate" class="btn btn-warning text-white">Tidak Berputus Asa</a>
+                    </div>
+                
+            </div>
+            <div class="col-md-4">
+                    
+                    <div class="card-body">
+                        <a href="#advanced" class="btn btn-danger">Mantapkan</a>
+                    
+            
+            </div>
+        </div>
                 </section>
             </div>
+
+            
             
             <!-- Grammar Guide Tab -->
             <div class="tab-pane fade" id="grammar" role="tabpanel">
@@ -473,14 +595,14 @@
                             <h3><i class="fas fa-cube me-2"></i> Struktur Ayat</h3>
                             <p>Hokkien Kelantan mengikut struktur Subject-Verb-Object (SVO) yang serupa dengan Bahasa Melayu:</p>
                             <div class="example-sentence">
-                                <p><span class="hokkien-badge">Hokkien</span> Wa ciak pui (I eat rice)</p>
+                                <p><span class="hokkien-badge">Hokkien</span> Wa ciak pui</p>
                                 <p><span class="malay-badge">BM</span> Saya makan nasi</p>
                             </div>
                             
                             <h3 class="mt-4"><i class="fas fa-cube me-2"></i> Pembentukan Persoalana/Ayat Pertanyaan</h3>
                             <p>Soalan selalunya dibentuk dengan menambah zarah soalan pada akhir:</p>
                             <div class="example-sentence">
-                                <p><span class="hokkien-badge">Hokkien</span> Ee ciak pa bo? (Awak sudah makan ke belum?)</p>
+                                <p><span class="hokkien-badge">Hokkien</span> Ee ciak pa bo?</p>
                                 <p><span class="malay-badge">BM</span> Awak sudah makan?</p>
                             </div>
                         </div>
@@ -488,40 +610,40 @@
                             <h3><i class="fas fa-cube me-2"></i> Penafian</h3>
                             <p>Untuk menafikan kata kerja, "bo" digunakan sebelum kata kerja:</p>
                             <div class="example-sentence">
-                                <p><span class="hokkien-badge">Hokkien</span> Wa bo ciak (Saya tidak makan)</p>
+                                <p><span class="hokkien-badge">Hokkien</span> Wa bo ciak </p>
                                 <p><span class="malay-badge">Malay</span> Saya tidak makan</p>
                             </div>
                             
                             <h3 class="mt-4"><i class="fas fa-cube me-2"></i> Pemilikan</h3>
                             <p>Sifat merujuk kepada pemilikan ditunjukkan dengan "e" selepas pemilik:</p>
                             <div class="example-sentence">
-                                <p><span class="hokkien-badge">Hokkien</span> Wa e bo-yik (Buku kepunyaan sayak)</p>
+                                <p><span class="hokkien-badge">Hokkien</span> Wa e Chek</p>
                                 <p><span class="malay-badge">Malay</span> Buku saya</p>
                             </div>
                         </div>
                     </div>
                     
-                    <h3 class="mt-4"><i class="fas fa-cube me-2"></i> Penanda Tense</h3>
-                    <p>Hokkien Kelantan menggunakan kata masa dan bukannya kata kerja konjugasi:</p>
+                    <h3 class="mt-4"><i class="fas fa-cube me-2"></i> Penekanan</h3>
+                    <p>Hokkien Kelantan menggunakan kata masa dan bukannya kata hubung:</p>
                     <table class="comparison-table">
                         <tr>
-                            <th>Tense</th>
+                            <th>Penekanan </th>
                             <th>Hokkien Kelantan</th>
                             <th>Bahasa Malaysia</th>
                         </tr>
                         <tr>
                             <td>Selepas</td>
-                            <td>Wa ciak pa (I eat already)</td>
-                            <td>Saya sudah makan</td>
+                            <td>Wa ciak pa </td>
+                            <td>kenyang,saya makan</td>
                         </tr>
                         <tr>
                             <td>Semasa</td>
-                            <td>Wa ciak (I eat)</td>
+                            <td>Wa ciak</td>
                             <td>Saya makan</td>
                         </tr>
                         <tr>
                             <td>Selepas</td>
-                            <td>Wa beh ciak (I will eat)</td>
+                            <td>Wa beh ciak </td>
                             <td>Saya akan makan</td>
                         </tr>
                     </table>
@@ -531,37 +653,37 @@
             <!-- Vocabulary Tab -->
             <div class="tab-pane fade" id="vocabulary" role="tabpanel">
                 <div class="lesson-section">
-                    <h2 class="section-title">Vocabulary Bank</h2>
+                    <h2 class="section-title">bank kosa kata</h2>
                     
                     <div class="row">
                         <div class="col-md-4">
                             <h3><i class="fas fa-utensils me-2"></i> Makanan & Hidangan</h3>
                             <div class="vocab-card">
-                                <p><strong>Pui</strong> - Nasi (Rice)</p>
+                                <p><strong>Pui</strong> - Nasi</p>
                                 <p><strong>Bak kia</strong> - Kaca Mata</p>
-                                <p><strong>Gea bak</strong> - Daging ayam (Chicken)</p>
-                                <p><strong>Bak ciu</strong> - Mata (Eyes)</p>
-                                <p><strong>I-am pik</strong> - Pensil (Pencil)</p>
+                                <p><strong>Kea bak</strong> - Daging ayam </p>
+                                <p><strong>Bak ciu</strong> - Mata </p>
+                                <p><strong>Iyam pik</strong> - Pensil </p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <h3><i class="fas fa-users me-2"></i>Rakyat & Keluarga</h3>
                             <div class="vocab-card">
-                                <p><strong>Am ma kun</strong> - Leher (Neck)</p>
-                                <p><strong>Kia lo</strong> - Jalan Kaki (Walking)</p>
-                                <p><strong>Zhao lo</strong> - Berlari (Running)</p>
-                                <p><strong>Zha bo</strong> - Perempuan (Women)</p>
-                                <p><strong>Zha po</strong> - Lelaki (Man)</p>
+                                <p><strong>Am ma kun</strong> - Leher</p>
+                                <p><strong>Kia lo</strong> - Jalan Kaki </p>
+                                <p><strong>Zhao lo</strong> - Berlari </p>
+                                <p><strong>Zha bo</strong> - Perempuan</p>
+                                <p><strong>Zha po</strong> - Lelaki </p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <h3><i class="fas fa-home me-2"></i> Item Setiap Hari</h3>
                             <div class="vocab-card">
-                                <p><strong>Chek</strong> - Buku (Book)</p>
-                                <p><strong>Qiu bu</strong> - Jari Tangan(Thumb)</p>
-                                <p><strong>Qiu khuan</strong> - Wrist (Pergelanggan Tangan)</p>
-                                <p><strong>Dian nao</strong> - Komputer (Computer)</p>
-                                <p><strong>Qiu pio</strong> - Jam Tangan (Watch)</p>
+                                <p><strong>Chek</strong> - Buku</p>
+                                <p><strong>Qiu bu</strong> - Jari Tangan</p>
+                                <p><strong>Qiu khuan</strong> - Pergelenggan Tangan</p>
+                                <p><strong>Dian nao</strong> - Komputer </p>
+                                <p><strong>Qiu pio</strong> - Jam Tangan </p>
                             </div>
                         </div>
                     </div>
@@ -570,31 +692,31 @@
                         <div class="col-md-4">
                             <h3><i class="fas fa-user me-2"></i> Bahagian Badan</h3>
                             <div class="vocab-card">
-                                <p><strong>Kha tui</strong> - Kaki (Leg)</p>
-                                <p><strong>Chiu/qiu</strong> - Lengan (Hand)</p>
-                                <p><strong>Chui tun</strong> - Bibir (Lips)</p>
-                                <p><strong>Hee-Yar</strong> - Telinga (Ear)</p>
-                                <p><strong>Bin</strong> - Muka (Face)</p>
+                                <p><strong>Kha tui</strong> - Betis </p>
+                                <p><strong>Chiu/qiu</strong> - Lengan </p>
+                                <p><strong>Chui tun</strong> - Bibir </p>
+                                <p><strong>Hee-Yar</strong> - Telinga </p>
+                                <p><strong>Bin</strong> - Muka </p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <h3><i class="fas fa-comments me-2"></i> Frasa</h3>
                             <div class="vocab-card">
-                                <p><strong>Wa bo zhai</strong> - Saya tidak tahu (I don't know)</p>
-                                <p><strong>Zhai zheng ho</strong> - Bercucuk tanam itu amalan baik (Very good)</p>
-                                <p><strong>Bo lui</strong> - Tiada duit (No money)</p>
-                                <p><strong>Mai Kek seng</strong> - Jangan marah (Don't be angry)</p>
-                                <p><strong>Ho ciak</strong> - Sedap (Delicious)</p>
+                                <p><strong>Wa bo zhai</strong> - Saya tidak tahu </p>
+                                <p><strong>Zhai zheng ho</strong> - Bercucuk tanam, baik. </p>
+                                <p><strong>Bo lui</strong> - Tiada duit</p>
+                                <p><strong>Ai Khi Juak</strong> - Nak marah</p>
+                                <p><strong>Ho ciak</strong> - Sedap</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <h3><i class="fas fa-adjust me-2"></i> Adjektif atau kata sifat</h3>
                             <div class="vocab-card">
-                                <p><strong>Sui</strong> - Cantik (Beautiful)</p>
-                                <p><strong>Oo</strong> - Hitam (Black)</p>
-                                <p><strong>Ang</strong> - Merah (Red)</p>
-                                <p><strong>Sukak</strong> - Suka (Like)</p>
-                                <p><strong>Ho</strong> - Baik (Good)</p>
+                                <p><strong>Sui</strong> - Cantik </p>
+                                <p><strong>Oo</strong> - Hitam </p>
+                                <p><strong>Ang</strong> - Merah</p>
+                                <p><strong>Sukak</strong> - Suka </p>
+                                <p><strong>Ho</strong> - Baik </p>
                             </div>
                         </div>
                     </div>
@@ -618,22 +740,22 @@
                                 </tr>
                                 <tr>
                                     <td>Peringkat Tinggi (55)</td>
-                                    <td>si (poem)</td>
+                                    <td>si (puisi)</td>
                                     <td>Pic rata tinggi</td>
                                 </tr>
                                 <tr>
                                     <td>Peningkatan sederhana (35)</td>
-                                    <td>tera (to try)</td>
+                                    <td>tera (mencuba)</td>
                                     <td>Starts mid, rises sharply</td>
                                 </tr>
                                 <tr>
                                     <td>Jatuh rendah (21)</td>
-                                    <td>sì (time)</td>
+                                    <td>sì (masa)</td>
                                     <td>Mula rendah, suara jatuh perlahan</td>
                                 </tr>
                                 <tr>
                                     <td>Jatuh tinggi (53)</td>
-                                    <td>sî (city)</td>
+                                    <td>sî (mati)</td>
                                     <td>Bermula tinggi, jatuh mendadak</td>
                                 </tr>
                             </table>
@@ -658,11 +780,11 @@
                             </div>
                             
                             <div class="pronunciation-guide mt-4">
-                                <h4>Hentian glottal</h4>
-                                <p>Perkataan yang berakhir dengan "-h" mempunyai hentian glotal (potongan mengejut):</p>
+                                <h4>Pemerhentian glottal</h4>
+                                <p>Perkataan yang berakhir dengan "-k" mempunyai hentian glotal (potongan mengejut):</p>
                                 <ul>
                                     <li>"Bak" (meat) berakhir dengan hentian glotal</li>
-                                    <li>"Khoo" (to cry) mempunyai penyempitan glotal</li>
+                                    <li>"Liak" (Tangkap) mempunyai penyempitan glotal</li>
                                 </ul>
                             </div>
                             
@@ -671,16 +793,16 @@
                                 <p>Banyak vokal disengau dalam dialek Hokkien Kampung:</p>
                                 <ul>
                                     <li>"Saa" (suara sengau) mempunyai sengau yang kuat</li>
-                                    <li>"Ea" (air) disebut dengan kualiti hidung</li>
+                                    <li>"E" (macam air dalam dialek sik) disebut dengan kualiti hidung</li>
                                 </ul>
                             </div>
                             
                             <h3 class="mt-4"><i class="fas fa-volume-up me-2"></i> Latihan Tubi</h3>
                             <div class="example-sentence">
                                 <p>Dengar dan ulangi pasangan minimum ini:</p>
-                                <p><strong>si</strong> (poem) vs <strong>sí</strong> (to try)</p>
-                                <p><strong>bin</strong> (face) vs <strong>bín</strong> (quick)</p>
-                                <p><strong>bak</strong> (meat) vs <strong>bák</strong> (to hit)</p>
+                                <p><strong>si</strong> (puisi) vs <strong>sí</strong> (meniyakan)</p>
+                                <p><strong>bin</strong> (muka) vs <strong>bín</strong> (laju)</p>
+                                <p><strong>bak</strong> (meat) vs <strong>bák</strong> (memukul)</p>
                             </div>
                         </div>
                     </div>
@@ -688,31 +810,89 @@
             </div>
         </div>
     </div>
+  <!-- Music Player - Add this to your HTML (best in footer or sidebar) -->
+<div class="music-player">
+  <audio id="bgMusic" loop>
+    <source src="tang3.mp3" type="audio/mpeg">
+    Your browser does not support audio element.
+  </audio>
+  <button id="musicToggle" class="btn btn-sm btn-outline-secondary">
+    <i class="fas fa-music"></i> <span id="musicStatus">Play Theme</span>
+  </button>
+  <span class="volume-control">
+    <i class="fas fa-volume-down"></i>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+    <i class="fas fa-volume-up"></i>
+  </span>
+</div>
+
+    <script>
+
+  // Music Player Functionality
+    const music = document.getElementById('bgMusic');
+    const toggleBtn = document.getElementById('musicToggle');
+    const statusLabel = document.getElementById('musicStatus');
+    const volumeSlider = document.getElementById('volumeSlider');
+  
+  // Check if user previously allowed audio
+    let audioEnabled = localStorage.getItem('audioEnabled') === 'true';
+  
+    if(audioEnabled) {
+    music.volume = 0.3; // Start at low volume
+    music.play().catch(e => console.log("Auto-play prevented"));
+    }
+  
+  // Toggle button
+    toggleBtn.addEventListener('click', function() {
+    if(music.paused) {
+      music.play();
+      statusLabel.textContent = "Pause Theme";
+      localStorage.setItem('audioEnabled', 'true');
+    } else {
+      music.pause();
+      statusLabel.textContent = "Play Theme";
+      localStorage.setItem('audioEnabled', 'false');
+    }
+  });
+  
+  // Volume control
+  volumeSlider.addEventListener('input', function() {
+    music.volume = this.value;
+  });
+</script>
     
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">
-            <p>Hok-Kam Ji &copy; 2023</p>
+            <p>Hok-Kam Kampung &copy; 2025</p>
             <p class="mb-0">Direka khas untuk peminat bahasa dan pelajar warisan</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Activate all tooltips
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                const target = document.querySelector(this.getAttribute('href'));
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             });
         });
-    </script>
+        </script>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1000;">
+    <div class="flashcard-button-container">
+        <a href="hkjflashcard.html" class="btn btn-primary flashcard-button" style="animation: float 3s ease-in-out infinite;">
+            <i class="fas fa-lightbulb me-2"></i> FLASHCARD HOK-KAM JIQ
+        </a>
+    </div>
+    </div>
+
 </body>
 </html>
